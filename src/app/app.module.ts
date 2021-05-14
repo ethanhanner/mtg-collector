@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CardDetailComponent } from './card-detail/card-detail.component';
 import { CardsListComponent } from './cards-list/cards-list.component';
+import { CardSearchComponent } from './card-search/card-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardDetailComponent,
-    CardsListComponent
+    CardsListComponent,
+    CardSearchComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

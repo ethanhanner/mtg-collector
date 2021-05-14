@@ -6,7 +6,7 @@ export interface Card {
   colors: string[];
   layout: string; // normal, split, modal_dfc, etc
   mana_cost: string;
-  type_line: string;
+  type: string;
   rarity: string;
   oracle_text: string;
   price: number; // tcg mid

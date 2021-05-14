@@ -1,1 +1,56 @@
-<p>card-detail works!</p>
+<div class="c-card-detail">
+  <span class="c-card-detail__heading">CARD DETAILS:</span>
+  <div class="c-card-detail__wrapper" *ngIf="card">
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">name: </span>
+      <span class="c-card-detail__value">{{ card.name }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">scryfall id: </span>
+      <span class="c-card-detail__value">{{ card.id }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">set id: </span>
+      <span class="c-card-detail__value">{{ card.set_id }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">cmc: </span>
+      <span class="c-card-detail__value">{{ card.cmc }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">layout: </span>
+      <span class="c-card-detail__value">{{ card.layout }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">mana cost: </span>
+      <span class="c-card-detail__value">{{ card.mana_cost }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">type: </span>
+      <span class="c-card-detail__value">{{ card.type }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">rarity: </span>
+      <span class="c-card-detail__value">{{ card.rarity }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">oracle text: </span>
+      <span class="c-card-detail__value">{{ card.oracle_text }}</span>
+    </p>
+
+    <p class='c-card-detail__wrapper__field'>
+      <span class="c-card-detail__label">price: </span>
+      <span class="c-card-detail__value">{{ card.price }}</span>
+    </p>
+
+  </div> <!-- /.c-card-detail__wrapper -->
+</div> <!-- /.c-card-detail -->

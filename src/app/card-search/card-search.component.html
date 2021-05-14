@@ -1,0 +1,19 @@
+<div class="c-card-search">
+  <div class="c-card-search__search-bar__container">
+    <label class="c-card-search__search-bar__label" for="search-box">
+      Card Search</label>
+    <input #searchBox id="search-box" class="c-card-search__search-bar__input"
+      (input)="search(searchBox.value)" />
+  </div> <!-- /.c-card-search__search-bar__container -->
+
+  <div class="c-card-search__results__container" *ngIf="cards$">
+    <!-- TODO: make the number of results dynamic -->
+    <h3 class="c-card-search__results__header">1 Result:</h3>
+
+    <!-- TODO: eventually this should display a list of card names, then I click one to display the details
+        either on a separate page or within a section on the same page
+        (probably within a section that has the basic details, with the option to go to a full page for it) -->
+    <!-- <app-card-detail [card]="cards$"></app-card-detail> -->
+    {{ cards$ | async }}
+  </div>
+</div> <!-- /.c-card-search -->
