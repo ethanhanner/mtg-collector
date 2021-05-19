@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, from } from 'rxjs';
 import { catchError, retry, map, tap } from 'rxjs/operators';
 import { Card } from './card';
 
@@ -13,16 +13,16 @@ export class ScryfallService {
 
   constructor(private http: HttpClient) { }
 
-  searchCards(term: string) {
+  searchCards(term: string): Observable<Object> {
     term = term.trim();
 
     const options = term ?
       { params: new HttpParams()
-        .set('name', term)
-        .set('unique', 'cards') // later make this prints
+        .set('q', term)
+        .set('unique', 'prints') // later make this prints
       } : {};
 
-    return this.http.get(this.scryfallUrl, options)
+    return this.http.get<Object>(this.scryfallUrl, options)
       .pipe(
         catchError(this.handleError)
       );

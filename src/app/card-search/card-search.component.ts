@@ -13,8 +13,10 @@ import { ScryfallService } from '../scryfall.service';
   styleUrls: ['./card-search.component.scss']
 })
 export class CardSearchComponent implements OnInit {
-  cards$: Observable<Object>; // TODO: what is this type? it's returned by scryfallService.searchCards
+  cards$: Observable<Card[]>; // TODO: what is this type? it's returned by scryfallService.searchCards
   // eventually I need to have this be an array of Card[]
+  // raw_output$: Observable<JSON>;
+  raw_output: any;
   private searchTerms = new Subject<string>();
 
   constructor(private scryfallService: ScryfallService) { }
@@ -22,20 +24,22 @@ export class CardSearchComponent implements OnInit {
   // Push a search term into the observable stream
   search(term: string): void {
     console.log("search called");
-    this.searchTerms.next(term);
+    // this.searchTerms.next(term);
+    this.scryfallService.searchCards(term)
+      .subscribe(resp => this.raw_output = JSON.stringify(resp, null, 1));
   }
 
   ngOnInit(): void {
-    this.cards$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
+    // this.cards$ = this.searchTerms.pipe(
+    //   // wait 300ms after each keystroke before considering the term
+    //   debounceTime(300),
 
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
+    //   // ignore new term if same as previous term
+    //   distinctUntilChanged(),
 
-      // switch to new search observable each time the term changes
-      switchMap((term: string) => this.scryfallService.searchCards(term))
-    );
+    //   // switch to new search observable each time the term changes
+    //   switchMap((term: string) => this.scryfallService.searchCards(term))
+    // );
   }
 
 }
