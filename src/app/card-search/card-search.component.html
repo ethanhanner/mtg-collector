@@ -8,7 +8,7 @@
       <button class="c-card-search__search-bar__button" (click)="search(searchBox.value)">Search</button>
   </div> <!-- /.c-card-search__search-bar__container -->
 
-  <div class="c-card-search__results__container" *ngIf="raw_output">
+  <div class="c-card-search__results__container">
     <!-- TODO: make the number of results dynamic -->
     <h3 class="c-card-search__results__header">1 Result:</h3>
 
@@ -16,6 +16,24 @@
         either on a separate page or within a section on the same page
         (probably within a section that has the basic details, with the option to go to a full page for it) -->
     <!-- <app-card-detail [card]="cards$"></app-card-detail> -->
-    {{ raw_output }}
+    <ul>
+      <li *ngFor="let card of cards$">
+        <b>ID:</b> {{ card.id }} <br/><br/>
+        <b>NAME:</b> {{ card.name }} <br/><br/>
+        <b>SET ID:</b> {{ card.set_id }} <br/><br/>
+        <b>SET CODE:</b> {{ card.set_code }} <br/><br/>
+        <b>SET NAME:</b> {{ card.set_name }} <br/><br/>
+        <b>IS FOIL?:</b> {{ card.isFoil }} <br/><br/>
+        <b>CMC:</b> {{ card.cmc }} <br/><br/>
+        <b>COLORS:</b> {{ card.colors }} <br/><br/>
+        <b>LAYOUT:</b> {{ card.layout }} <br/><br/>
+        <b>MANA COST:</b> {{ card.mana_cost }} <br/><br/>
+        <b>TYPE:</b> {{ card.type }} <br/><br/>
+        <b>RARITY:</b> {{ card.rarity }} <br/><br/>
+        <b>ORACLE TEXT:</b> {{ card.oracle_text }} <br/><br/>
+        <b>PRICE:</b> {{ card.price }} <br/><br/>
+        <b>PRICE DATE:</b> {{ card.price_date }} <br/><br/>
+      </li>
+    </ul>
   </div>
 </div> <!-- /.c-card-search -->

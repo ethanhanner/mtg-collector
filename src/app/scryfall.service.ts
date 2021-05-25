@@ -13,13 +13,13 @@ export class ScryfallService {
 
   constructor(private http: HttpClient) { }
 
-  searchCards(term: string): Observable<Object> {
+  searchCards(term: string): Observable<any> {
     term = term.trim();
 
     const options = term ?
       { params: new HttpParams()
         .set('q', term)
-        .set('unique', 'prints') // later make this prints
+        .set('unique', 'cards') // later make this prints
       } : {};
 
     return this.http.get<Object>(this.scryfallUrl, options)

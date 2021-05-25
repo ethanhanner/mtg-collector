@@ -13,21 +13,51 @@ import { ScryfallService } from '../scryfall.service';
   styleUrls: ['./card-search.component.scss']
 })
 export class CardSearchComponent implements OnInit {
-  cards$: Observable<Card[]>; // TODO: what is this type? it's returned by scryfallService.searchCards
-  // eventually I need to have this be an array of Card[]
+  cards$: Card[] = [];
   // raw_output$: Observable<JSON>;
   raw_output: any;
+  card_name: string;
   private searchTerms = new Subject<string>();
 
   constructor(private scryfallService: ScryfallService) { }
 
   // Push a search term into the observable stream
+  // search(term: string): void {
+  //   this.searchTerms.next(term);
+  // }
+
   search(term: string): void {
-    console.log("search called");
-    // this.searchTerms.next(term);
+    // this.scryfallService.searchCards(term)
+    //   .subscribe(resp => this.raw_output = JSON.stringify(resp, null, 1));
+
     this.scryfallService.searchCards(term)
-      .subscribe(resp => this.raw_output = JSON.stringify(resp, null, 1));
+      .subscribe(resp => this.parseJSONtoCards(resp.data));
   }
+
+  // Parse the JSON result into an array of Card objects
+  parseJSONtoCards(cardData: any) {
+    for(let i = 0; i < cardData.length; i++) {
+      let nextCard = new Card();
+      nextCard.id = cardData[i].id;
+      nextCard.name = cardData[i].name;
+      nextCard.set_id = 1; // placeholder until I make the database
+      nextCard.set_code = cardData[i].set;
+      nextCard.set_name = cardData[i].set_name;
+      nextCard.isFoil = cardData[i].foil;
+      nextCard.cmc = cardData[i].cmc;
+      nextCard.colors = cardData[i].colors;
+      nextCard.layout = cardData[i].layout;
+      nextCard.mana_cost = cardData[i].mana_cost;
+      nextCard.type = cardData[i].type_line; // TODO: split this into type and subtype
+      nextCard.rarity = cardData[i].rarity;
+      nextCard.oracle_text = cardData[i].oracle_text;
+      nextCard.price = cardData[i].prices.usd;
+      nextCard.price_date = new Date();
+      this.cards$.push(nextCard);
+    }
+  }
+
+
 
   ngOnInit(): void {
     // this.cards$ = this.searchTerms.pipe(
