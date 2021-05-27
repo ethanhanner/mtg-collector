@@ -19,7 +19,7 @@ export class ScryfallService {
     const options = term ?
       { params: new HttpParams()
         .set('q', term)
-        .set('unique', 'cards') // later make this prints
+        .set('unique', 'prints') // cards = 1 result, prints = multiple
       } : {};
 
     return this.http.get<Object>(this.scryfallUrl, options)

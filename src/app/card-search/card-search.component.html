@@ -8,22 +8,38 @@
       <button class="c-card-search__search-bar__button" (click)="search(searchBox.value)">Search</button>
   </div> <!-- /.c-card-search__search-bar__container -->
 
-  <div class="c-card-search__results__container">
-    <!-- TODO: make the number of results dynamic -->
-    <h3 class="c-card-search__results__header">1 Result:</h3>
+  <div class="c-card-search__results__outer-container">
+    <!-- No results or no search entered yet -->
+    <div class="c-card-search__results__wrapper" *ngIf="cards$.length == 0">
+      <h3 class="c-card-search__results__header">0 Results</h3>
+      <p class="c-card-search__results__message">No search results! Enter a card name above.</p>
+    </div> <!-- /.c-card-search__results__wrapper -->
 
+    <!-- search results available -->
     <!-- TODO: eventually this should display a list of card names, then I click one to display the details
         either on a separate page or within a section on the same page
         (probably within a section that has the basic details, with the option to go to a full page for it) -->
+    <div class="c-card-search__results__wrapper" *ngIf="cards$.length > 0">
+      <h3 class="c-card-search__results__header">{{ cards$.length }} Results</h3> <!-- TODO: add s or no s based on 1 result or > 1 -->
+      <ul class="c-card-search__results__list">
+        <li *ngFor="let card of cards$">
+          <b>Name: </b> {{ card.name }} <br/>
+          <b>Set: </b> {{ card.set_name }} <br/>
+        </li>
+      </ul>
+    </div> <!-- /.c-card-search__results__wrapper -->
+
     <!-- <app-card-detail [card]="cards$"></app-card-detail> -->
-    <ul>
+    <!-- <ul>
       <li *ngFor="let card of cards$">
+        <img [src]="card.image_uri" />
         <b>ID:</b> {{ card.id }} <br/><br/>
         <b>NAME:</b> {{ card.name }} <br/><br/>
         <b>SET ID:</b> {{ card.set_id }} <br/><br/>
         <b>SET CODE:</b> {{ card.set_code }} <br/><br/>
         <b>SET NAME:</b> {{ card.set_name }} <br/><br/>
         <b>IS FOIL?:</b> {{ card.isFoil }} <br/><br/>
+        <b>IMAGE URI:</b> {{ card.image_uri }} <br/><br/>
         <b>CMC:</b> {{ card.cmc }} <br/><br/>
         <b>COLORS:</b> {{ card.colors }} <br/><br/>
         <b>LAYOUT:</b> {{ card.layout }} <br/><br/>
@@ -34,6 +50,6 @@
         <b>PRICE:</b> {{ card.price }} <br/><br/>
         <b>PRICE DATE:</b> {{ card.price_date }} <br/><br/>
       </li>
-    </ul>
-  </div>
+    </ul> -->
+  </div> <!-- /.c-card-serch__results__outer-container -->
 </div> <!-- /.c-card-search -->

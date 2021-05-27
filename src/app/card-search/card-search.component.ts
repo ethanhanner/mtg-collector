@@ -30,6 +30,7 @@ export class CardSearchComponent implements OnInit {
     // this.scryfallService.searchCards(term)
     //   .subscribe(resp => this.raw_output = JSON.stringify(resp, null, 1));
 
+    this.cards$ = []; // empty cards array
     this.scryfallService.searchCards(term)
       .subscribe(resp => this.parseJSONtoCards(resp.data));
   }
@@ -44,6 +45,7 @@ export class CardSearchComponent implements OnInit {
       nextCard.set_code = cardData[i].set;
       nextCard.set_name = cardData[i].set_name;
       nextCard.isFoil = cardData[i].foil;
+      nextCard.image_uri = cardData[i].image_uris.png;
       nextCard.cmc = cardData[i].cmc;
       nextCard.colors = cardData[i].colors;
       nextCard.layout = cardData[i].layout;

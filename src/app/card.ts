@@ -5,6 +5,7 @@ export interface Card {
   set_code: string; // three letter code for the set
   set_name: string;
   isFoil: boolean;
+  image_uri: string; // TODO: download and store these myself
   cmc: number; // decimal value
   colors: string[];
   layout: string; // normal, split, modal_dfc, etc
@@ -26,6 +27,7 @@ export class Card implements Card {
     this.set_code = "";
     this.set_name = "";
     this.isFoil = false;
+    this.image_uri = "";
     this.cmc = -1;
     this.colors = [];
     this.layout = "";
