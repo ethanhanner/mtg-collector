@@ -4,6 +4,7 @@ export interface Card {
   set_id: number; // matches a number id in a database table of sets that I will make eventually
   set_code: string; // three letter code for the set
   set_name: string;
+  set_icon: string; // path to an svg icon for the set
   isFoil: boolean;
   image_uri: string; // TODO: download and store these myself
   cmc: number; // decimal value
@@ -26,6 +27,7 @@ export class Card implements Card {
     this.set_id = -1;
     this.set_code = "";
     this.set_name = "";
+    this.set_icon = "../assets/symbols/sets/set-symbol-aer.svg"; // TODO: don't hardcode this
     this.isFoil = false;
     this.image_uri = "";
     this.cmc = -1;

@@ -1,0 +1,40 @@
+
+// MIXINS
+// ======
+
+// to be used when creating clases specifically meant to be extended
+// using the @extend directive
+@mixin extend-block($name) {
+  %#{$name} {
+    @content;
+  }
+}
+
+// component block to prepend c- to component classes
+@mixin component-block($name) {
+  .c-#{$name} {
+    @content;
+  }
+}
+
+// layout block to prepend l- to layout classes
+@mixin layout-block($name) {
+  .l-#{$name} {
+    @content;
+  }
+}
+
+// utility block to prepend u- to utility classes
+@mixin utility-block($name) {
+  .u-#{$name} {
+    @content;
+  }
+}
+
+
+// object block to prepend o- to object classes
+@mixin object-block($name) {
+  .o-#{$name} {
+    @content;
+  }
+}

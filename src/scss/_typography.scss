@@ -1,0 +1,14 @@
+/* TYPOGRAPHY STYLES - SITE WIDE */
+
+@include extend-block('typography') {
+  // %typography--bold
+  @include modifier('bold') {
+    font-weight: bold;
+  }
+}
+
+@include block('typography') {
+  @include modifier('bold') {
+    @extend %typography--bold;
+  }
+}

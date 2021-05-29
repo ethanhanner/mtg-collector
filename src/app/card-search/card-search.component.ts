@@ -14,6 +14,7 @@ import { ScryfallService } from '../scryfall.service';
 })
 export class CardSearchComponent implements OnInit {
   cards$: Card[] = [];
+  selectedCard ?: Card;
   // raw_output$: Observable<JSON>;
   raw_output: any;
   card_name: string;
@@ -25,6 +26,16 @@ export class CardSearchComponent implements OnInit {
   // search(term: string): void {
   //   this.searchTerms.next(term);
   // }
+
+  // called when user clicks a card in the search result list. selects that card to display details
+  selectCard(card: Card): void {
+    this.selectedCard = card;
+  }
+
+  // called when user clicks button to go back to search results from the card detail view
+  closeDetail(): void {
+    // TODO: how do i reset selectedCard back to an empty variable?
+  }
 
   search(term: string): void {
     // this.scryfallService.searchCards(term)

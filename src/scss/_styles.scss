@@ -1,0 +1,17 @@
+@import 'bemify';
+@import 'custom-bem';
+
+@import 'icons';
+@import 'typography';
+@import 'mixins/mq';
+
+html, body {
+  background-color: #fff;
+  font-family: Helvetica, sans-serif;
+  height: 100vh;
+  margin: 10px;
+
+  @include mq('md') {
+    margin: 20px;
+  }
+}

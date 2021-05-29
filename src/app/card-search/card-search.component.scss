@@ -1,0 +1,121 @@
+@import 'styles';
+
+//.c-card-search
+@include component-block('card-search') {
+  width: 100%;
+
+  //.c-card-search__search-bar
+  @include element('search-bar') {
+    //.c-card-search__search-bar__container
+    @include element('container') {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    //.c-card-search__search-bar__input
+    @include element('input') {
+      flex: 3 1 auto;
+      margin-right: 10px;
+      padding: 5px;
+    }
+
+    //.c-card-search__search-bar__button
+    @include element('button') {
+      flex: 1 1 auto;
+      padding: 5px;
+    }
+  }
+
+  //.c-card-search__results
+  @include element('results') {
+
+    //.c-card-search__results__list-container
+    @include element('list-container') {
+      width: 100%;
+    }
+
+    //.c-card-search__results__list
+    @include element('list') {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      //.c-card-search__results__list__header
+      @include element('header') {
+
+      }
+
+      //.c-card-search__results__list__card
+      @include element('card') {
+        margin: 25px 0;
+
+        //.c-card-search__results__list__card__name
+        @include element('name') {
+          display: block;
+          font-weight: bold;
+        }
+
+        //.c-card-search__results__list__card__set
+        @include element('set') {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: flex-start;
+          width: 100%;
+
+          //.c-card-search__results__list__card__set__icon
+          @include element('icon') {
+            flex: 0 1 auto;
+            margin-right: 5px;
+            width: 20px;
+          }
+
+          //.c-card-search__results__card__set__name
+          @include element('name') {
+            flex: 0 1 auto;
+            padding-top: 3px;
+          }
+        }
+      }
+
+    }
+
+    //.c-card-search__results__detail-popout
+    @include element('detail-popout') {
+      background-color: #fff;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      width: 100%;
+
+      //.c-card-search__results__detail-popout__header
+      @include element('header') {
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+
+      //.c-card-search__results__detail-popout__set
+      @include element('set') {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        width: 100%;
+
+        //.c-card-search__results__detail-popout__set__icon
+        @include element('icon') {
+          flex: 0 1 auto;
+          margin-right: 5px;
+          width: 20px;
+        }
+
+        //.c-card-search__results__detail-popout__set__name
+        @include element('name') {
+          flex: 0 1 auto;
+          padding-top: 3px;
+        }
+      }
+    }
+
+  }
+}

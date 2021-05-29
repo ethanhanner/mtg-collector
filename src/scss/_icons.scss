@@ -1,0 +1,51 @@
+// mana symbols
+
+$icon-mana-white: "/img/mana-white.svg";
+$icon-mana-blue: "/img/mana-blue.svg";
+$icon-mana-black: "/img/mana-green.svg";
+$icon-mana-red: "/img/mana-red.svg";
+$icon-mana-green: "/img/mana-green.png";
+
+[class^="icon-"], [class*=" icon-"] {
+/* use !important to prevent issues with browser extensions that change fonts */
+  //font-family: '#{$icomoon-font-family}' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mana {
+  display: inline-block;
+  height: 28px;
+  width: 27px;
+}
+
+.icon-mana-white {
+  background-image: url($icon-mana-white);
+}
+.icon-mana-blue {
+  &:before {
+    content: $icon-mana-blue;
+  }
+}
+.icon-mana-black {
+  &:before {
+    content: $icon-mana-black;
+  }
+}
+.icon-mana-red {
+  &:before {
+    content: $icon-mana-red;
+  }
+}
+.icon-mana-green {
+  background-image: url($icon-mana-green);
+  content: '';
+}

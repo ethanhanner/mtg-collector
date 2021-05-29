@@ -1,33 +1,38 @@
 <div class="c-card-search">
   <div class="c-card-search__search-bar__container">
-    <label class="c-card-search__search-bar__label" for="search-box">
-      Card Search</label>
     <!-- <input #searchBox id="search-box" class="c-card-search__search-bar__input"
       (input)="search(searchBox.value)" /> -->
-      <input #searchBox id="search-box" class="c-card-search__search-bar__input" />
+      <input #searchBox id="search-box" class="c-card-search__search-bar__input" placeholder="Enter a card name..."/>
       <button class="c-card-search__search-bar__button" (click)="search(searchBox.value)">Search</button>
   </div> <!-- /.c-card-search__search-bar__container -->
 
-  <div class="c-card-search__results__outer-container">
-    <!-- No results or no search entered yet -->
-    <div class="c-card-search__results__wrapper" *ngIf="cards$.length == 0">
-      <h3 class="c-card-search__results__header">0 Results</h3>
-      <p class="c-card-search__results__message">No search results! Enter a card name above.</p>
-    </div> <!-- /.c-card-search__results__wrapper -->
+  <div class="c-card-search__results">
 
-    <!-- search results available -->
-    <!-- TODO: eventually this should display a list of card names, then I click one to display the details
-        either on a separate page or within a section on the same page
-        (probably within a section that has the basic details, with the option to go to a full page for it) -->
-    <div class="c-card-search__results__wrapper" *ngIf="cards$.length > 0">
-      <h3 class="c-card-search__results__header">{{ cards$.length }} Results</h3> <!-- TODO: add s or no s based on 1 result or > 1 -->
+    <div class="c-card-search__results__list-container">
+      <h3 class="c-card-search__results__list__header">{{ cards$.length }} Results</h3> <!-- TODO: add or remove s based on 1 result or > 1 -->
+      <!-- TODO: eventually this should display a list of card names, then I click one to display the details
+      either on a separate page or within a section on the same page
+      (probably within a section that has the basic details, with the option to go to a full page for it) -->
       <ul class="c-card-search__results__list">
-        <li *ngFor="let card of cards$">
-          <b>Name: </b> {{ card.name }} <br/>
-          <b>Set: </b> {{ card.set_name }} <br/>
+        <li class="c-card-search__results__list__card" *ngFor="let card of cards$">
+          <span class="c-card-search__results__list__card__name" (click)="selectCard(card)">{{ card.name }}</span>
+          <div class="c-card-search__results__list__card__set">
+            <img class="c-card-search__results__list__card__set__icon" [src]="card.set_icon"/>
+            <span class="c-card-search__results__list__card__set__name">{{ card.set_name }}</span>
+          </div> <!-- /.c-card-search__results__list__card__set -->
         </li>
       </ul>
-    </div> <!-- /.c-card-search__results__wrapper -->
+    </div> <!-- /.c-card-search__results__list-container -->
+
+    <div class="c-card-search__results__detail-popout" *ngIf="selectedCard">
+      <button class="c-card-search__results__detail-popout__back" (click)="closeDetail()">Back to search results</button>
+      <h2 class="c-card-search__results__detail-popout__header">{{ selectedCard.name }}</h2>
+      <div class="c-card-search__results__detail-popout__set">
+        <img class="c-card-search__results__detail-popout__set__icon" [src]="selectedCard.set_icon" />
+        <span class="c-card-search__results__detail-popout__set__name">{{ selectedCard.set_name }}</span>
+      </div> <!-- /.c-card-search__results__detail-popout__set -->
+    </div> <!-- /.c-card-search__results__detail-popout -->
+
 
     <!-- <app-card-detail [card]="cards$"></app-card-detail> -->
     <!-- <ul>
@@ -51,5 +56,5 @@
         <b>PRICE DATE:</b> {{ card.price_date }} <br/><br/>
       </li>
     </ul> -->
-  </div> <!-- /.c-card-serch__results__outer-container -->
+  </div> <!-- /.c-card-serch__results -->
 </div> <!-- /.c-card-search -->
