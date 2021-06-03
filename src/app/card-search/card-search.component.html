@@ -8,11 +8,8 @@
 
   <div class="c-card-search__results">
 
-    <div class="c-card-search__results__list-container">
+    <div class="c-card-search__results__list-container" *ngIf="selectedCard === undefined">
       <h3 class="c-card-search__results__list__header">{{ cards$.length }} Results</h3> <!-- TODO: add or remove s based on 1 result or > 1 -->
-      <!-- TODO: eventually this should display a list of card names, then I click one to display the details
-      either on a separate page or within a section on the same page
-      (probably within a section that has the basic details, with the option to go to a full page for it) -->
       <ul class="c-card-search__results__list">
         <li class="c-card-search__results__list__card" *ngFor="let card of cards$">
           <span class="c-card-search__results__list__card__name" (click)="selectCard(card)">{{ card.name }}</span>
@@ -25,12 +22,22 @@
     </div> <!-- /.c-card-search__results__list-container -->
 
     <div class="c-card-search__results__detail-popout" *ngIf="selectedCard">
-      <button class="c-card-search__results__detail-popout__back" (click)="closeDetail()">Back to search results</button>
+      <button class="c-card-search__results__detail-popout__back-button" (click)="closeDetail()">
+        <span class="icon icon-arrow-left"></span>
+        <span class="c-card-search__results__detail-popout__back-button__text">Back to Results</span>
+      </button>
       <h2 class="c-card-search__results__detail-popout__header">{{ selectedCard.name }}</h2>
       <div class="c-card-search__results__detail-popout__set">
         <img class="c-card-search__results__detail-popout__set__icon" [src]="selectedCard.set_icon" />
         <span class="c-card-search__results__detail-popout__set__name">{{ selectedCard.set_name }}</span>
       </div> <!-- /.c-card-search__results__detail-popout__set -->
+
+      <img class="c-card-search__results__detail-popout__card-image" [src]="selectedCard.image_uri"/>
+
+      <div class="c-card-search__results__detail-popout__info">
+
+      </div> <!-- /.c-card-search__results__detail-popout__info -->
+
     </div> <!-- /.c-card-search__results__detail-popout -->
 
 

@@ -1,56 +1,44 @@
-<div class="c-card-detail">
-  <span class="c-card-detail__heading">CARD DETAILS:</span>
-  <div class="c-card-detail__wrapper" *ngIf="card">
+<div class="c-card-detail" *ngIf="card">
+  <h2 class="c-card-detail__name-header">{{ card.name }}</h2>
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">name: </span>
-      <span class="c-card-detail__value">{{ card.name }}</span>
-    </p>
+  <div class="c-card-detail__set">
+    <img class="c-card-detail__set__icon" [src]="card.set_icon"/>
+    <span class="c-card-detail__set__name">{{ card.set_name }}</span>
+  </div> <!-- /.c-card-detail__set -->
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">scryfall id: </span>
-      <span class="c-card-detail__value">{{ card.id }}</span>
-    </p>
+  <img class="c-card-detail__card-image" [src]="card.image_uri"/>
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">set id: </span>
-      <span class="c-card-detail__value">{{ card.set_id }}</span>
-    </p>
+  <div class="c-card-detail__info-section__wrapper">
+    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--rarity">
+      <span class="c-card-detail__info-section__field__label">Rarity:</span>
+      <span class="c-card-detail__info-section____field__value">{{ card.rarity }}</span>
+    </div> <!-- /.c-card-detail__info-section__field -->
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">cmc: </span>
-      <span class="c-card-detail__value">{{ card.cmc }}</span>
-    </p>
+    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--type">
+      <span class="c-card-detail__info-section__field__label">Type:</span>
+      <span class="c-card-detail__info-section____field__value">{{ card.type }}</span>
+    </div> <!-- /.c-card-detail__info-section__field -->
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">layout: </span>
-      <span class="c-card-detail__value">{{ card.layout }}</span>
-    </p>
+    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--mana-cost">
+      <span class="c-card-detail__info-section__field__label">Mana Cost:</span>
+      <span class="c-card-detail__info-section____field__value">{{ card.mana_cost }}</span>
+    </div> <!-- /.c-card-detail__info-section__field -->
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">mana cost: </span>
-      <span class="c-card-detail__value">{{ card.mana_cost }}</span>
-    </p>
+    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--oracle-text">
+      <span class="c-card-detail__info-section__field__label c-card-detail__info-section__field__label--oracle-text">
+        Oracle Text:</span>
+      <span class="c-card-detail__info-section____field__value">{{ card.oracle_text }}</span>
+    </div> <!-- /.c-card-detail__info-section__field -->
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">type: </span>
-      <span class="c-card-detail__value">{{ card.type }}</span>
-    </p>
+    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--price">
+      <span class="c-card-detail__info-section__field__label">Price:</span>
+      <span class="c-card-detail__info-section____field__value">{{ card.price }}</span>
+    </div> <!-- /.c-card-detail__info-section__field -->
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">rarity: </span>
-      <span class="c-card-detail__value">{{ card.rarity }}</span>
-    </p>
+    <!-- COLLECTION INFO SECTION
+      # collected
+      DROP DOWN MENU FOR TAGS ASSIGNED TO THIS CARD? CLICK THE ARROW TO REVEAL
+      decks that have this card in it? -->
 
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">oracle text: </span>
-      <span class="c-card-detail__value">{{ card.oracle_text }}</span>
-    </p>
-
-    <p class='c-card-detail__wrapper__field'>
-      <span class="c-card-detail__label">price: </span>
-      <span class="c-card-detail__value">{{ card.price }}</span>
-    </p>
-
-  </div> <!-- /.c-card-detail__wrapper -->
+  </div> <!-- /.c-card-detail__info-section__wrapper -->
 </div> <!-- /.c-card-detail -->

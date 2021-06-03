@@ -1,0 +1,16 @@
+<div class="c-set-symbol-search">
+  <div class="c-set-symbol-search__wrap">
+    <input #setSearchBox id="set-search-box" class="c-set-symbol-search__input" placeholder="Enter a set code..."/>
+    <button class="c-set-symbol-search__button" (click)="getSetIconUri(setSearchBox.value)">get icon uri</button>
+  </div>
+
+
+  <div class="c-set-symbol-search__results" *ngIf="setIconUri">
+    <p><span style="font-weight:bold">Set Icon URI:</span> {{ setIconUri }}</p>
+    <button class="c-set-symbol-search__button" (click)="downloadSetIcon()">Download Icon</button>
+  </div>
+
+  <button class="c-set-symbol-search__button c-set-symbol-search__button__get-sets" (click)="getSets()">Get All Sets</button>
+  <button *ngIf="sets$.length > 0" class="c-set-symbol-search__button__download-icons" (click)="downloadSetIconSvgs()">
+    Download Set SVGs</button>
+</div>

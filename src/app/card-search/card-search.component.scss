@@ -2,6 +2,9 @@
 
 //.c-card-search
 @include component-block('card-search') {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 560px;
   width: 100%;
 
   //.c-card-search__search-bar
@@ -18,13 +21,13 @@
     @include element('input') {
       flex: 3 1 auto;
       margin-right: 10px;
+      max-width: 411px;
       padding: 5px;
     }
 
     //.c-card-search__search-bar__button
     @include element('button') {
       flex: 1 1 auto;
-      padding: 5px;
     }
   }
 
@@ -85,13 +88,32 @@
     @include element('detail-popout') {
       background-color: #fff;
       height: 100vh;
-      position: absolute;
-      top: 0;
+      margin: 20px auto 0;
+      max-width: 560px;
       width: 100%;
+
+      @include mq('sm') {
+
+      }
+
+      //.c-card-search__results__detail-popout__back-button
+      @include element('back-button') {
+        padding: 5px 10px;
+
+        .icon {
+          margin-right: 8px;
+        }
+
+        //.c-card-search__results__detail-popout__back-button__text
+        @include element('text') {
+          bottom: 1px;
+          position: relative;
+        }
+      }
 
       //.c-card-search__results__detail-popout__header
       @include element('header') {
-        margin-bottom: 5px;
+        margin: 25px 0 5px;
         text-transform: uppercase;
       }
 
@@ -114,6 +136,14 @@
           flex: 0 1 auto;
           padding-top: 3px;
         }
+      }
+
+      //.c-card-search__results__detail-popout__card-image
+      @include element('card-image') {
+        display: block;
+        margin: 30px auto;
+        max-width: 360px;
+        width: 60%;
       }
     }
 

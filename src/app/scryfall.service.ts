@@ -9,7 +9,9 @@ import { Card } from './card';
 })
 
 export class ScryfallService {
-  private scryfallUrl = "https://api.scryfall.com/cards/search";
+  private scryfallApiUrl = "https://api.scryfall.com/";
+  private scryfallApiUrl_Cards = this.scryfallApiUrl + "cards/search";
+  private scryfallApiUrl_Sets = this.scryfallApiUrl + "sets/";
 
   constructor(private http: HttpClient) { }
 
@@ -22,14 +24,26 @@ export class ScryfallService {
         .set('unique', 'prints') // cards = 1 result, prints = multiple
       } : {};
 
-    return this.http.get<Object>(this.scryfallUrl, options)
+    return this.http.get<Object>(this.scryfallApiUrl_Cards, options)
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  parseResults(raw_result: any) {
+  searchSets(code: string): Observable<any> {
+    code = code.trim();
+    let setUrl = this.scryfallApiUrl_Sets + code;
+    return this.http.get<Object>(setUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
 
+  getSets(): Observable<any> {
+    return this.http.get<Object>(this.scryfallApiUrl_Sets)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   // private handleError<T>(operation = 'operation', result?: T) {

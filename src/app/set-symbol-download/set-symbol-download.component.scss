@@ -1,0 +1,27 @@
+@import 'styles';
+
+@include component-block('set-symbol-search') {
+
+  @include element('wrap') {
+    margin-bottom: 30px;
+  }
+
+  @include element('input') {
+    margin-right: 10px;
+    padding: 5px;
+  }
+
+  @include element('button') {
+    padding: 5px;
+
+    @include element('get-sets') {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+
+  @include element('results') {
+    margin-bottom: 30px;
+  }
+
+}

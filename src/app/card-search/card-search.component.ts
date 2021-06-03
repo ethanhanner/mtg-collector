@@ -34,7 +34,7 @@ export class CardSearchComponent implements OnInit {
 
   // called when user clicks button to go back to search results from the card detail view
   closeDetail(): void {
-    // TODO: how do i reset selectedCard back to an empty variable?
+    this.selectedCard = undefined;
   }
 
   search(term: string): void {
