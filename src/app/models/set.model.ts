@@ -1,5 +1,4 @@
 export interface Set {
-  id: string;
   code: string;
   name: string;
   release_date: string;
@@ -9,7 +8,6 @@ export interface Set {
 // define a constructor for an empty Set object
 export class Set implements Set {
   constructor() {
-    this.id = "";
     this.code = "";
     this.name = "";
     this.release_date = "";

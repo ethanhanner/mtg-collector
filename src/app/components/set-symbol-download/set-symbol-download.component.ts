@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { saveAs } from 'file-saver';
-import { ScryfallService } from '../scryfall.service';
+import { ScryfallService } from '../../services/scryfall.service';
 
-import { Set } from '../set';
+import { Set } from '../../models/set.model';
 
 @Component({
   selector: 'app-set-symbol-download',
@@ -39,7 +39,6 @@ export class SetSymbolDownloadComponent implements OnInit {
     console.log("setData length = " + setData.length);
     for(let i = 30; i < 40; i++) {
       let nextSet = new Set();
-      nextSet.id = setData[i].id;
       nextSet.code = setData[i].code;
       nextSet.name = setData[i].name;
       nextSet.release_date = setData[i].released_at;

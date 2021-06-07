@@ -4,8 +4,8 @@ import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
 
-import { Card } from '../card';
-import { ScryfallService } from '../scryfall.service';
+import { Card } from '../../models/card.model';
+import { ScryfallService } from '../../services/scryfall.service';
 
 @Component({
   selector: 'app-card-search',

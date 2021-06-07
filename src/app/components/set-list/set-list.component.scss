@@ -1,0 +1,116 @@
+@import 'styles';
+
+//.c-set-list
+@include component-block('set-list') {
+
+  //.c-set-list__search-bar
+  @include element('search-bar') {
+
+    //.c-set-list__search-bar__input
+    @include element('input') {
+      padding: 5px;
+    }
+
+    //.c-set-list__search-bar__button
+    @include element('button') {
+
+    }
+  }
+
+  //.c-set-list__content
+  @include element('content') {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    max-width: 875px;
+
+    //.c-set-list__content__header
+    @include element('header') {
+      margin-bottom: 20px;
+    }
+
+    //.c-set-list__content__list-wrapper
+    @include element('list-wrapper') {
+      flex: 0 1 45%;
+    }
+
+    //.c-set-list__content__list (ul element)
+    @include element('list') {
+      border: 2px solid #e4e4e4;
+      list-style-type: none;
+      padding: 0;
+
+      //.c-set-list__content__list__item (li element)
+      @include element('item') {
+        border-bottom: 1px solid #e4e4e4;
+        padding: 20px;
+      }
+
+      //.c-set-list__content__list__delete-button
+      @include element('delete-button') {
+        background-color: #ee0000; // TODO: make this style part of c-button--danger
+        border-color: #ee0000;
+        border-radius: 2px;
+        color: #ffffff;
+      }
+    }
+
+    //.c-set-list__content__detail
+    @include element('detail') {
+      flex: 0 1 45%;
+
+      //.c-set-list__content__detail__inner
+      @include element('inner') {
+
+      }
+
+      //.c-set-list__content__detail__name
+      @include element('name') {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      //.c-set-list__content__detail__icon (img element)
+      @include element('icon') {
+        margin-bottom: 20px;
+        width: 100px;
+      }
+
+      //.c-set-list__content__detail__field
+      @include element('field') {
+        //.c-set-list__content__detail__field__group
+        @include element('group') {
+          margin-bottom: 15px;
+        }
+
+        //.c-set-list__content__detail__field__label
+        @include element('label') {
+          font-weight: bold;
+          margin-right: 10px;
+        }
+
+        //.c-set-list__content__detail__field__value
+        @include element('value') {
+          text-transform: uppercase;
+        }
+      }
+
+      //.c-set-list__content__detail__edit-link
+      @include element('edit-link') {
+        background-color: #f4c514;
+        color: #000;
+        display: block;
+        padding: 5px;
+        text-align: center;
+        text-decoration: none;
+        width: 70px;
+      }
+
+      //.c-set-list__content__detail__message
+      @include element('message') {
+
+      }
+    }
+
+  }
+}

@@ -1,0 +1,74 @@
+<div class="c-add-set">
+
+<!-- ###### This is the form to put in the details for the new Set.
+            Only displayed if submitted = false
+     ###### -->
+  <div class="c-add-set__form" *ngIf="!submitted">
+
+    <div class="c-add-set__form__group c-add-set__form__group--code">
+      <label class="c-add-set__form__group__label" for="code">Set Code</label>
+      <input class="c-add-set__form__group__input"
+        type="text" id="code" required
+        [(ngModel)]="set.code"
+        name="code" />
+    </div> <!-- /.c-add-set__form__group -->
+
+    <div class="c-add-set__form__group c-add-set__form__group--name">
+      <label class="c-add-set__form__group__label" for="name">Set Name</label>
+      <input class="c-add-set__form__group__input"
+        type="text" id="name" required
+        [(ngModel)]="set.name"
+        name="name" />
+    </div> <!-- /.c-add-set__form__group -->
+
+    <div class="c-add-set__form__group c-add-set__form__group--release-date">
+      <label class="c-add-set__form__group__label" for="release_date">Set Release Date</label>
+      <input class="c-add-set__form__group__input"
+        type="text" id="release_date" required
+        [(ngModel)]="set.release_date"
+        name="release_date" />
+    </div> <!-- /.c-add-set__form__group -->
+
+    <div class="c-add-set__form__group c-add-set__form__group--icon-uri">
+      <label class="c-add-set__form__group__label" for="icon_uri">Set Icon URI</label>
+      <input class="c-add-set__form__group__input"
+        type="text" id="icon_uri" required
+        [(ngModel)]="set.icon_uri"
+        name="icon_uri" />
+    </div> <!-- /.c-add-set__form__group -->
+
+    <button class="c-add-set__form__submit-button" (click)="saveSet()">Submit</button>
+
+  </div> <!-- /.c-add-set__form-->
+
+<!-- ###### This is the confirmation dialog displayed after a new Set was submitted.
+            Click button to clear the current set details and display the form again.
+     ###### -->
+  <div class="c-add-set__confirmation" *ngIf="submitted">
+    <p class="c-add-set__confirmation__message">The set was added to the database.</p>
+
+    <div class="c-add-set__confirmation__details-group">
+      <span class="c-add-set__confirmation__details-group__field">Code:</span>
+      <span class="c-add-set__confirmation__details-group__value">{{ set.code }}</span>
+    </div> <!-- /.c-add-set__confirmation__details-group -->
+
+    <div class="c-add-set__confirmation__details-group">
+      <span class="c-add-set__confirmation__details-group__field">Name:</span>
+      <span class="c-add-set__confirmation__details-group__value">{{ set.name }}</span>
+    </div> <!-- /.c-add-set__confirmation__details-group -->
+
+    <div class="c-add-set__confirmation__details-group">
+      <span class="c-add-set__confirmation__details-group__field">Release Date:</span>
+      <span class="c-add-set__confirmation__details-group__value">{{ set.release_date }}</span>
+    </div> <!-- /.c-add-set__confirmation__details-group -->
+
+    <div class="c-add-set__confirmation__details-group">
+      <span class="c-add-set__confirmation__details-group__field">Icon URI:</span>
+      <span class="c-add-set__confirmation__details-group__value">{{ set.icon_uri }}</span>
+    </div> <!-- /.c-add-set__confirmation__details-group -->
+
+    <button class="c-add-set__confirmation__button" (click)="displaySetForm()">Add another set</button>
+  </div> <!-- /./c-add-set__confirmation -->
+
+
+</div> <!-- /.c-add-set -->

@@ -1,0 +1,61 @@
+<div class="c-set-list">
+  <div class="c-set-list__search-bar">
+    <input class="c-set-list__search-bar__input"
+      type="text"
+      placeholder="Search by code"
+      [(ngModel)]="code" />
+
+    <button class="c-set-list__search-bar__button"
+      type="button"
+      (click)="searchByCode()">Search
+    </button>
+  </div> <!-- /.c-set-list__search-bar -->
+
+  <div class="c-set-list__content">
+    <div class="c-set-list__content__list-wrapper">
+      <h4 class="c-set-list__content__header">Set List</h4>
+      <ul class="c-set-list__content__list">
+        <li class="c-set-list__content__list__item"
+          *ngFor="let set of sets; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveSet(set, i)">
+          {{ set.name }}
+        </li>
+      </ul>
+
+      <button class="c-set-list__content__list__delete-button c-button--danger"
+        (click)="removeAllSets()">Remove All</button>
+
+      <!-- TODO: button to remove selected set only ? -->
+
+    </div> <!-- /.c-set-list__content__list-wrapper -->
+
+    <div class="c-set-list__content__detail">
+      <h4 class="c-set-list__content__header">Set Details</h4>
+      <!-- ###### DISPLAY WHEN A SET IS SELECTED -->
+      <div class="c-set-list__content__detail__inner" *ngIf="currentSet">
+        <p class="c-set-list__content__detail__name">{{ currentSet.name }}</p>
+
+        <img class="c-set-list__content__detail__icon" [src]="currentSet.icon_uri"/>
+
+        <div class="c-set-list__content__detail__field__group">
+          <label class="c-set-list__content__detail__field__label">Code:</label>
+          <span class="c-set-list__content__detail__field__value">{{ currentSet.code }}</span>
+        </div> <!-- /.c-set-list__content__detail__field__group -->
+
+        <div class="c-set-list__content__detail__field__group">
+          <label class="c-set-list__content__detail__field__label">Release Date:</label>
+          <span class="c-set-list__content__detail__field__value">{{ currentSet.release_date }}</span>
+        </div> <!-- /.c-set-list__content__detail__field__group -->
+
+        <a class="c-set-list__content__detail__edit-link"
+          routerLink="/sets/{{ currentSet.code }}">Edit</a>
+      </div> <!-- /.c-set-list__content__detail__inner (SET SELECTED) -->
+
+      <!-- ###### DISPLAY WHEN NO SET IS SELECTED -->
+      <div class="c-set-list__content__detail__inner" *ngIf="!currentSet">
+        <p class="c-set-list__content__detail__message">Click on a set to see its details...</p>
+      </div> <!-- /.c-set-list__content__field__group (NO SET SELECTED)-->
+    </div> <!-- /.c-set-list__content__detail -->
+  </div> <!-- /.c-set-list__content -->
+</div> <!-- /.c-set-list -->
