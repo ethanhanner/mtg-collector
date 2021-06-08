@@ -25,3 +25,34 @@
   }
 
 }
+
+//.c-set-symbol-download
+@include component-block('set-symbol-download') {
+
+  //.c-set-symbol-download__button
+  @include element('button') {
+    padding: 5px;
+  }
+
+  //.c-set-symbol-download__form
+  @include element('form') {
+
+    //.c-set-symbol-download__form__group
+    @include element('group') {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    //.c-set-symbol-download__form__label
+    @include element('label') {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+
+    //.c-set-symbol-download__form__input
+    @include element('input') {
+      padding: 5px;
+    }
+  }
+
+}

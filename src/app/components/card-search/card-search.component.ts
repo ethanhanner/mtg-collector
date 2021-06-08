@@ -52,9 +52,7 @@ export class CardSearchComponent implements OnInit {
       let nextCard = new Card();
       nextCard.id = cardData[i].id;
       nextCard.name = cardData[i].name;
-      nextCard.set_id = 1; // placeholder until I make the database
       nextCard.set_code = cardData[i].set;
-      nextCard.set_name = cardData[i].set_name;
       nextCard.isFoil = cardData[i].foil;
       nextCard.image_uri = cardData[i].image_uris.png;
       nextCard.cmc = cardData[i].cmc;
@@ -65,7 +63,6 @@ export class CardSearchComponent implements OnInit {
       nextCard.rarity = cardData[i].rarity;
       nextCard.oracle_text = cardData[i].oracle_text;
       nextCard.price = cardData[i].prices.usd;
-      nextCard.price_date = new Date();
       this.cards$.push(nextCard);
     }
   }

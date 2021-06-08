@@ -1,9 +1,14 @@
+// https://bezkoder.com/angular-11-crud-app/
+// MUST RUN ON PORT 8081
+// ng serve --port 8081 --open
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Set } from '../models/set.model';
 
 const baseUrl = 'http://localhost:8080/api/sets';
+const iconImgUrl = 'http://localhost:8080/set_icons/';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +41,4 @@ export class SetService {
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);
   }
-
 }

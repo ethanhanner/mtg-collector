@@ -2,15 +2,34 @@
   <div class="c-set-symbol-search__wrap">
     <input #setSearchBox id="set-search-box" class="c-set-symbol-search__input" placeholder="Enter a set code..."/>
     <button class="c-set-symbol-search__button" (click)="getSetIconUri(setSearchBox.value)">get icon uri</button>
-  </div>
+  </div> <!-- /.c-set-symbol-search__wrap -->
 
 
   <div class="c-set-symbol-search__results" *ngIf="setIconUri">
     <p><span style="font-weight:bold">Set Icon URI:</span> {{ setIconUri }}</p>
     <button class="c-set-symbol-search__button" (click)="downloadSetIcon()">Download Icon</button>
-  </div>
+  </div> <!-- /.c-set-symbol-search__results -->
+</div> <!-- /.c-set-symbol-search -->
 
-  <button class="c-set-symbol-search__button c-set-symbol-search__button__get-sets" (click)="getSets()">Get All Sets</button>
-  <button *ngIf="sets$.length > 0" class="c-set-symbol-search__button__download-icons" (click)="downloadSetIconSvgs()">
-    Download Set SVGs</button>
-</div>
+<div class="c-set-symbol-download">
+  <button class="c-set-symbol-download__button c-set-symbol-download__button__get-sets" (click)="getSets()">Get All Sets</button>
+
+  <div class="c-set-symbol-download__form" *ngIf="sets$.length > 0">
+    <p class="c-set-symbol-download__form__instructions">
+      Enter a start and end index for downloading the set icons. (Increments of 10)
+    </p>
+    <div class="c-set-symbol-download__form__group">
+      <label class="c-set-symbol-download__form__label">Start:</label>
+      <input #startIndexInput id="start-index" class="c-set-symbol-download__form__input" type="number" required />
+    </div> <!-- /.c-set-symbol-download__form__group -->
+
+    <div class="c-set-symbol-download__form__group">
+      <label class="c-set-symbol-download__form__label">End:</label>
+      <input #endIndexInput id="end-index" class="c-set-symbol-download__form__input" type="number" required />
+    </div> <!-- /.c-set-symbol-download__form__group -->
+
+    <button class="c-set-symbol-download__button"
+      (click)="downloadSetIconSvgs(startIndexInput.value, endIndexInput.value)">
+      Download Set SVGs</button>
+  </div> <!-- /.c-set-symbol-download__form -->
+</div> <!-- /.c-set-symbol-download -->

@@ -12,6 +12,7 @@ import { SetSymbolDownloadComponent } from './components/set-symbol-download/set
 import { AddSetComponent } from './components/add-set/add-set.component';
 import { SetDetailsComponent } from './components/set-details/set-details.component';
 import { SetListComponent } from './components/set-list/set-list.component';
+import { BuildSetTableComponent } from './components/build-set-table/build-set-table.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SetListComponent } from './components/set-list/set-list.component';
     SetSymbolDownloadComponent,
     AddSetComponent,
     SetDetailsComponent,
-    SetListComponent
+    SetListComponent,
+    BuildSetTableComponent
   ],
   imports: [
     BrowserModule,

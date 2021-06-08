@@ -7,6 +7,7 @@ import { CardSearchComponent } from './components/card-search/card-search.compon
 import { SetDetailsComponent } from './components/set-details/set-details.component';
 import { SetListComponent } from './components/set-list/set-list.component';
 import { AddSetComponent } from './components/add-set/add-set.component';
+import { SetSymbolDownloadComponent } from './components/set-symbol-download/set-symbol-download.component';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'card-search', component: CardSearchComponent },
   { path: 'sets', component: SetListComponent },
   { path: 'sets/:code', component: SetDetailsComponent },
-  { path: 'add-set', component: AddSetComponent }
+  { path: 'add-set', component: AddSetComponent },
+  { path: 'download-set-icons', component: SetSymbolDownloadComponent }
 ];
 
 @NgModule({

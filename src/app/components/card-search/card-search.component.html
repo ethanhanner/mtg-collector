@@ -14,8 +14,8 @@
         <li class="c-card-search__results__list__card" *ngFor="let card of cards$">
           <span class="c-card-search__results__list__card__name" (click)="selectCard(card)">{{ card.name }}</span>
           <div class="c-card-search__results__list__card__set">
-            <img class="c-card-search__results__list__card__set__icon" [src]="card.set_icon"/>
-            <span class="c-card-search__results__list__card__set__name">{{ card.set_name }}</span>
+            <!-- <img class="c-card-search__results__list__card__set__icon" [src]="card.set_icon"/>
+            <span class="c-card-search__results__list__card__set__name">{{ card.set_name }}</span> -->
           </div> <!-- /.c-card-search__results__list__card__set -->
         </li>
       </ul>
@@ -28,8 +28,8 @@
       </button>
       <h2 class="c-card-search__results__detail-popout__header">{{ selectedCard.name }}</h2>
       <div class="c-card-search__results__detail-popout__set">
-        <img class="c-card-search__results__detail-popout__set__icon" [src]="selectedCard.set_icon" />
-        <span class="c-card-search__results__detail-popout__set__name">{{ selectedCard.set_name }}</span>
+        <!-- <img class="c-card-search__results__detail-popout__set__icon" [src]="selectedCard.set_icon" />
+        <span class="c-card-search__results__detail-popout__set__name">{{ selectedCard.set_name }}</span> -->
       </div> <!-- /.c-card-search__results__detail-popout__set -->
 
       <img class="c-card-search__results__detail-popout__card-image" [src]="selectedCard.image_uri"/>
