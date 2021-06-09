@@ -7,14 +7,14 @@
 
   <div class="c-set-symbol-search__results" *ngIf="setIconUri">
     <p><span style="font-weight:bold">Set Icon URI:</span> {{ setIconUri }}</p>
-    <button class="c-set-symbol-search__button" (click)="downloadSetIcon()">Download Icon</button>
+    <button class="c-set-symbol-search__button" (click)="downloadIconSvg(setIconUri, setSearchBox.value)">Download Icon</button>
   </div> <!-- /.c-set-symbol-search__results -->
 </div> <!-- /.c-set-symbol-search -->
 
 <div class="c-set-symbol-download">
   <button class="c-set-symbol-download__button c-set-symbol-download__button__get-sets" (click)="getSets()">Get All Sets</button>
 
-  <div class="c-set-symbol-download__form" *ngIf="sets$.length > 0">
+  <div class="c-set-symbol-download__form" *ngIf="sets.length > 0">
     <p class="c-set-symbol-download__form__instructions">
       Enter a start and end index for downloading the set icons. (Increments of 10)
     </p>
@@ -32,4 +32,11 @@
       (click)="downloadSetIconSvgs(startIndexInput.value, endIndexInput.value)">
       Download Set SVGs</button>
   </div> <!-- /.c-set-symbol-download__form -->
+
+  <div class="c-set-symbol-download__check-file">
+    <input #setCodeBox id="set-code-box" class="c-set-symbol-download__form__input" type="string" />
+    <button class="c-set-symbol-download__button"
+      (click)="checkIfFileExists(setCodeBox.value)">Check if icon svg exists</button>
+    <p class="c-set-symbol-download__check-file__message" [innerHTML]="message"></p>
+  </div> <!-- /.c-set-symbol-download__check-file -->
 </div> <!-- /.c-set-symbol-download -->

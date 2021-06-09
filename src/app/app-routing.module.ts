@@ -8,6 +8,7 @@ import { SetDetailsComponent } from './components/set-details/set-details.compon
 import { SetListComponent } from './components/set-list/set-list.component';
 import { AddSetComponent } from './components/add-set/add-set.component';
 import { SetSymbolDownloadComponent } from './components/set-symbol-download/set-symbol-download.component';
+import { BuildSetTableComponent } from './components/build-set-table/build-set-table.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'sets', component: SetListComponent },
   { path: 'sets/:code', component: SetDetailsComponent },
   { path: 'add-set', component: AddSetComponent },
-  { path: 'download-set-icons', component: SetSymbolDownloadComponent }
+  { path: 'download-set-icons', component: SetSymbolDownloadComponent },
+  { path: 'build-set-table', component: BuildSetTableComponent }
 ];
 
 @NgModule({

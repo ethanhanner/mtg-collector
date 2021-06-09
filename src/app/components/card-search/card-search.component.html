@@ -6,7 +6,15 @@
       <button class="c-card-search__search-bar__button" (click)="search(searchBox.value)">Search</button>
   </div> <!-- /.c-card-search__search-bar__container -->
 
+
   <div class="c-card-search__results">
+
+
+    <!-- TESTING getType() and getSubtype() methods -->
+    <!-- <input #typeLine id="type-line" placeholder="Enter a type line..."/>
+    <button (click)="getSubtype(typeLine.value)">Get Subtype</button> -->
+
+
 
     <div class="c-card-search__results__list-container" *ngIf="selectedCard === undefined">
       <h3 class="c-card-search__results__list__header">{{ cards$.length }} Results</h3> <!-- TODO: add or remove s based on 1 result or > 1 -->

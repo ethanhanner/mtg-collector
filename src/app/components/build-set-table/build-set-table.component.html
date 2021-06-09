@@ -1,1 +1,11 @@
-<p>build-set-table works!</p>
+<div class="c-build-set-table">
+  <div class="c-build-set-table__button-wrapper">
+    <button class="c-build-set-table__button" (click)="getSetData()">Get Set Data</button>
+    <button class="c-build-set-table__button"
+      *ngIf="sets.length" (click)="saveSetsToDB()">Save Sets to DB</button>
+  </div> <!-- /.c-build-set-table__button-wrapper -->
+
+  <div class="c-build-set-table__message-area">
+    <p class="c-build-set-table__message" [innerHTML]="statusMessage"></p>
+  </div> <!-- /.c-build-set-table__message-area -->
+</div> <!-- /.c-build-set-table -->

@@ -16,7 +16,7 @@ export interface Card {
   price: number; // the price will be valid as of the date in updatedAt in the database
   flavor_name: string; // e.g. alternate Godzilla card names from Ikoria
   flavor_text: string;
-  frame_effect: string;
+  frame_effects: string[];
   card_faces: number[]; // when layout is not 'normal', card_faces will be an array of 2 integers
                         // corresponding to 2 entries in the card-face table
 }
@@ -41,7 +41,7 @@ export class Card implements Card {
     this.price = 0;
     this.flavor_name = "";
     this.flavor_text = "";
-    this.frame_effect = "";
+    this.frame_effects = [];
     this.card_faces = [];
   }
 }

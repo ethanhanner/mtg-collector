@@ -51,8 +51,14 @@
 
     //.c-set-symbol-download__form__input
     @include element('input') {
+      margin-right: 10px;
       padding: 5px;
     }
+  }
+
+  //c-set-symbol-download__check-file
+  @include element('check-file') {
+    margin-top: 30px;
   }
 
 }

@@ -1,0 +1,25 @@
+@import 'styles';
+
+//.c-build-set-table
+@include component-block('build-set-table') {
+
+  //.c-build-set-table__button-wrapper
+  @include element('button-wrapper') {
+
+  }
+
+  //.c-build-set-table__button
+  @include element('button') {
+    margin-right: 20px;
+  }
+
+  //.c-build-set-table__message-area
+  @include element('message-area') {
+    margin-top: 20px;
+  }
+
+  //.c-build-set-table__message
+  @include element('message') {
+
+  }
+}

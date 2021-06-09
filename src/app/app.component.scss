@@ -1,0 +1,28 @@
+@import 'styles';
+
+//.c-app
+@include component-block('app') {
+
+  //.c-app__navigation
+  @include element('navigation') {
+
+    //.c-app__navigation__list
+    @include element('list') {
+      list-style-type: none;
+      margin-bottom: 20px;
+
+      //.c-app__navigation__list__item
+      @include element('item') {
+        padding-bottom: 5px;
+      }
+    }
+
+    //.c-app__navigation__link
+    @include element('link') {
+      color: #180ada;
+      text-decoration: none;
+    }
+
+
+  }
+}
