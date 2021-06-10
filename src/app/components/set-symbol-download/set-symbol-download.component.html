@@ -1,42 +1,49 @@
-<div class="c-set-symbol-search">
-  <div class="c-set-symbol-search__wrap">
-    <input #setSearchBox id="set-search-box" class="c-set-symbol-search__input" placeholder="Enter a set code..."/>
-    <button class="c-set-symbol-search__button" (click)="getSetIconUri(setSearchBox.value)">get icon uri</button>
-  </div> <!-- /.c-set-symbol-search__wrap -->
-
-
-  <div class="c-set-symbol-search__results" *ngIf="setIconUri">
-    <p><span style="font-weight:bold">Set Icon URI:</span> {{ setIconUri }}</p>
-    <button class="c-set-symbol-search__button" (click)="downloadIconSvg(setIconUri, setSearchBox.value)">Download Icon</button>
-  </div> <!-- /.c-set-symbol-search__results -->
-</div> <!-- /.c-set-symbol-search -->
-
 <div class="c-set-symbol-download">
-  <button class="c-set-symbol-download__button c-set-symbol-download__button__get-sets" (click)="getSets()">Get All Sets</button>
-
-  <div class="c-set-symbol-download__form" *ngIf="sets.length > 0">
-    <p class="c-set-symbol-download__form__instructions">
-      Enter a start and end index for downloading the set icons. (Increments of 10)
-    </p>
-    <div class="c-set-symbol-download__form__group">
-      <label class="c-set-symbol-download__form__label">Start:</label>
-      <input #startIndexInput id="start-index" class="c-set-symbol-download__form__input" type="number" required />
-    </div> <!-- /.c-set-symbol-download__form__group -->
-
-    <div class="c-set-symbol-download__form__group">
-      <label class="c-set-symbol-download__form__label">End:</label>
-      <input #endIndexInput id="end-index" class="c-set-symbol-download__form__input" type="number" required />
-    </div> <!-- /.c-set-symbol-download__form__group -->
-
-    <button class="c-set-symbol-download__button"
-      (click)="downloadSetIconSvgs(startIndexInput.value, endIndexInput.value)">
-      Download Set SVGs</button>
-  </div> <!-- /.c-set-symbol-download__form -->
-
-  <div class="c-set-symbol-download__check-file">
-    <input #setCodeBox id="set-code-box" class="c-set-symbol-download__form__input" type="string" />
+  <div class="c-set-symbol-download__section">
+    <p class="c-set-symbol-download__heading">CHECK IF AN ICON FILE EXISTS:</p>
+    <input #setCodeBox id="set-code-box" class="c-set-symbol-download__form__input" type="string"
+      placeholder="Enter a set code..." />
     <button class="c-set-symbol-download__button"
       (click)="checkIfFileExists(setCodeBox.value)">Check if icon svg exists</button>
-    <p class="c-set-symbol-download__check-file__message" [innerHTML]="message"></p>
-  </div> <!-- /.c-set-symbol-download__check-file -->
+    <p class="c-set-symbol-download__message" [innerHTML]="message"></p>
+  </div> <!-- /.c-set-symbol-download__section -->
+
+  <div class="c-set-symbol-download__section">
+    <p class="c-set-symbol-download__heading">DOWNLOAD A SINGLE SET ICON:</p>
+    <input #setCodeSearch id="set-code-search" class="c-set-symbol-download__form__input"
+      type="string" placeholder="Enter a set code..." />
+    <button class="c-set-symbol-download__button"
+      (click)="getSetIcon(setCodeSearch.value)">Download Icon</button>
+  </div> <!-- /.c-set-symbol-download__section -->
+
+  <div class="c-set-symbol-download__section">
+    <p class="c-set-symbol-download__heading">DOWNLOAD SET ICONS:</p>
+    <button class="c-set-symbol-download__button c-set-symbol-download__button__get-sets" (click)="getSetData()">Get Set Data from Scryfall</button>
+
+    <div class="c-set-symbol-download__form" *ngIf="setData">
+      <p class="c-set-symbol-download__form__instructions">
+        Enter a start and end index for downloading the set icons. (Increments of 10)
+      </p>
+      <div class="c-set-symbol-download__form__group">
+        <label class="c-set-symbol-download__form__label">Start:</label>
+        <input #startIndexInput id="start-index" class="c-set-symbol-download__form__input" type="number" required />
+      </div> <!-- /.c-set-symbol-download__form__group -->
+
+      <div class="c-set-symbol-download__form__group">
+        <label class="c-set-symbol-download__form__label">End:</label>
+        <input #endIndexInput id="end-index" class="c-set-symbol-download__form__input" type="number" required />
+      </div> <!-- /.c-set-symbol-download__form__group -->
+
+      <button class="c-set-symbol-download__button"
+        (click)="downloadSetIconSvgs(startIndexInput.value, endIndexInput.value)">
+        Download Set SVGs</button>
+    </div> <!-- /.c-set-symbol-download__form -->
+  </div> <!-- .c-set-symbol-download__section -->
+
+
+  <div class="c-set-symbol-download__section" *ngIf="setData">
+    <p class="c-set-symbol-download__heading">DOWNLOAD MISSING SET ICONS:</p>
+    <button class="c-set-symbol-download__button"
+      (click)="downloadMissingSetIcons()">Download Missing Set Icons</button>
+  </div> <!-- /.c-set-symbol-download__section -->
 </div> <!-- /.c-set-symbol-download -->

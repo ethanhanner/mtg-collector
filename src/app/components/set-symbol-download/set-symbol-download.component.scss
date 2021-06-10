@@ -1,37 +1,23 @@
 @import 'styles';
 
-@include component-block('set-symbol-search') {
-
-  @include element('wrap') {
-    margin-bottom: 30px;
-  }
-
-  @include element('input') {
-    margin-right: 10px;
-    padding: 5px;
-  }
-
-  @include element('button') {
-    padding: 5px;
-
-    @include element('get-sets') {
-      display: block;
-      margin-bottom: 10px;
-    }
-  }
-
-  @include element('results') {
-    margin-bottom: 30px;
-  }
-
-}
-
 //.c-set-symbol-download
 @include component-block('set-symbol-download') {
 
   //.c-set-symbol-download__button
   @include element('button') {
     padding: 5px;
+  }
+
+  //.c-set-symbol-download__heading
+  @include element('heading') {
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-decoration: underline;
+  }
+
+  //.c-set-symbol-download__section
+  @include element('download-icons') {
+    margin: 50px 0;
   }
 
   //.c-set-symbol-download__form
@@ -54,11 +40,6 @@
       margin-right: 10px;
       padding: 5px;
     }
-  }
-
-  //c-set-symbol-download__check-file
-  @include element('check-file') {
-    margin-top: 30px;
   }
 
 }
