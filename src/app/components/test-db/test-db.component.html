@@ -1,0 +1,36 @@
+<div class="c-test-db">
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  TEST DATABASE FUNCTIONS RELATED TO CARDS
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+  <div class="c-test-db__cards">
+    <div class="c-test-db__cards__search">
+      <input #cardSearchBox id="card-search-box" class="c-test-db__cards__search__input"
+        placeholder="Enter a card name..." type="text" />
+      <button class="c-test-db__cards__search__button c-test-db__button"
+        (click)="search(cardSearchBox.value)">Search</button>
+    </div> <!-- /.c-test-db__cards__search -->
+
+    <div class="c-test-db__cards__results" *ngIf="cards.length > 0">
+      <h3 class="c-test-db__cards__results__header">{{ cards.length }} Results</h3>
+      <ul class="c-test-db__cards__results__list">
+        <li class="c-test-db__cards__results__item" *ngFor="let card of cards">
+          <div class="c-test-db__cards__results__item__info">
+            <span class="c-test-db__cards__results__item__name">
+              {{ card.name }}
+            </span>
+            &nbsp;-&nbsp;
+            <span class="c-test-db__cards__results__item__set">
+              {{ card.set_code }}
+            </span>
+          </div> <!-- /.c-test-db__results__list__item__info -->
+
+          <button class="c-test-db__cards__results__list__add-to-db c-test-db__button"
+            (click)="addCardToDB(card)">Add to DB</button>
+        </li>
+      </ul>
+    </div> <!-- /.c-test-db__cards__results -->
+  </div> <!-- /.c-test-db__cards -->
+
+</div> <!-- /.c-test-db -->

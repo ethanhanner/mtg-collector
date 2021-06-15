@@ -13,6 +13,7 @@ import { AddSetComponent } from './components/add-set/add-set.component';
 import { SetDetailsComponent } from './components/set-details/set-details.component';
 import { SetListComponent } from './components/set-list/set-list.component';
 import { BuildSetTableComponent } from './components/build-set-table/build-set-table.component';
+import { TestDbComponent } from './components/test-db/test-db.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BuildSetTableComponent } from './components/build-set-table/build-set-t
     AddSetComponent,
     SetDetailsComponent,
     SetListComponent,
-    BuildSetTableComponent
+    BuildSetTableComponent,
+    TestDbComponent
   ],
   imports: [
     BrowserModule,

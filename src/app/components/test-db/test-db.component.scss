@@ -1,0 +1,77 @@
+@import 'styles';
+
+//.c-test-db
+@include component-block('test-db') {
+
+  /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+      TEST CARD DATABASE SECTION
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+
+    //.c-test-db__cards
+  @include element('cards') {
+
+    //.c-test-db__cards__search
+    @include element('search') {
+
+
+      //.c-test-db__cards__search__input
+      @include element('input') {
+        margin-right: 10px;
+        padding: 5px 10px;
+      }
+
+      //.c-test-db__cards__search__button
+      @include element('button') {
+        padding: 5px;
+      }
+    }
+
+    //.c-test-db__cards__results
+    @include element('results') {
+
+      //.c-test-db__cards__results__header
+      @include element('header') {
+
+      }
+
+      //.c-test-db__cards__results__list
+      @include element('list') {
+        list-style-type: none;
+
+        //.c-test-db__cards__results__list__add-to-db
+        @include element('add-to-db') {
+          background-color: #028b09;
+          color: #fff;
+          display: inline-block;
+          padding: 5px;
+        }
+      }
+
+      //.c-test-db__cards__results__item
+      @include element('item') {
+        margin-bottom: 15px;
+
+
+        //.c-test-db__cards__results__item__info
+        @include element('info') {
+          display: inline-block;
+          margin-right: 20px;
+        }
+
+        //.c-test-db__cards__results__item__name
+        @include element('name') {
+          font-weight: bold;
+        }
+
+        //.c-test-db__cards__results__item__set
+        @include element('set') {
+          font-style: italic;
+        }
+      }
+
+
+    }
+  }
+
+
+}

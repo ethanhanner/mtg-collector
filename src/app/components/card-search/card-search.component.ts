@@ -13,7 +13,7 @@ import { ScryfallService } from '../../services/scryfall.service';
   styleUrls: ['./card-search.component.scss']
 })
 export class CardSearchComponent implements OnInit {
-  cards$: Card[] = [];
+  cards$: Card[] = []; // holds the Card objects that were returned from the search
   selectedCard ?: Card;
   // raw_output$: Observable<JSON>;
   raw_output: any;
@@ -46,7 +46,7 @@ export class CardSearchComponent implements OnInit {
       .subscribe(resp => this.parseJSONtoCards(resp.data));
   }
 
-  // Parse the JSON result into an array of Card objects
+  // Parse a JSON array of cards from Scryfall into an array of Card objects
   parseJSONtoCards(cardData: any) {
     let nextCard = new Card();
     for(let i = 0; i < cardData.length; i++) {
