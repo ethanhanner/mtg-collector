@@ -1,25 +1,25 @@
 <div class="c-card-search">
-  <div class="c-card-search__search-bar__container">
+  <form class="c-card-search__search-bar__form">
     <!-- <input #searchBox id="search-box" class="c-card-search__search-bar__input"
       (input)="search(searchBox.value)" /> -->
-      <input #searchBox id="search-box" class="c-card-search__search-bar__input" placeholder="Enter a card name..."/>
-      <button class="c-card-search__search-bar__button" (click)="search(searchBox.value)">Search</button>
-  </div> <!-- /.c-card-search__search-bar__container -->
+      <input #searchBox id="search-box"
+        class="c-card-search__search-bar__input"
+        placeholder="Enter a card name..."
+       />
+      <button class="c-card-search__search-bar__button"
+        type="submit"
+        (click)="search(searchBox.value)">
+            Search
+      </button>
+  </form> <!-- /.c-card-search__search-bar__form -->
 
 
   <div class="c-card-search__results">
 
-
-    <!-- TESTING getType() and getSubtype() methods -->
-    <!-- <input #typeLine id="type-line" placeholder="Enter a type line..."/>
-    <button (click)="getSubtype(typeLine.value)">Get Subtype</button> -->
-
-
-
     <div class="c-card-search__results__list-container" *ngIf="selectedCard === undefined">
-      <h3 class="c-card-search__results__list__header">{{ cards$.length }} Results</h3> <!-- TODO: add or remove s based on 1 result or > 1 -->
+      <h3 class="c-card-search__results__list__header">{{ cards.length }} Results</h3> <!-- TODO: add or remove s based on 1 result or > 1 -->
       <ul class="c-card-search__results__list">
-        <li class="c-card-search__results__list__card" *ngFor="let card of cards$">
+        <li class="c-card-search__results__list__card" *ngFor="let card of cards">
           <span class="c-card-search__results__list__card__name" (click)="selectCard(card)">{{ card.name }}</span>
           <div class="c-card-search__results__list__card__set">
             <!-- <img class="c-card-search__results__list__card__set__icon" [src]="card.set_icon"/>
@@ -29,6 +29,13 @@
       </ul>
     </div> <!-- /.c-card-search__results__list-container -->
 
+
+    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+          ***************************************************************************************
+          Detail for an individual card, displays when a card is clicked in the list
+          *****************************************************************************************
+        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
     <div class="c-card-search__results__detail-popout" *ngIf="selectedCard">
       <button class="c-card-search__results__detail-popout__back-button" (click)="closeDetail()">
         <span class="icon icon-arrow-left"></span>
@@ -36,13 +43,42 @@
       </button>
       <h2 class="c-card-search__results__detail-popout__header">{{ selectedCard.name }}</h2>
       <div class="c-card-search__results__detail-popout__set">
-        <!-- <img class="c-card-search__results__detail-popout__set__icon" [src]="selectedCard.set_icon" />
-        <span class="c-card-search__results__detail-popout__set__name">{{ selectedCard.set_name }}</span> -->
+        <img class="c-card-search__results__detail-popout__set__icon" [src]="selectedCard.set_code | getSetIcon" />
+        <span class="c-card-search__results__detail-popout__set__name">{{ selectedCard.set_code | getSetName }}</span>
+
       </div> <!-- /.c-card-search__results__detail-popout__set -->
 
       <img class="c-card-search__results__detail-popout__card-image" [src]="selectedCard.image_uri"/>
 
       <div class="c-card-search__results__detail-popout__info">
+        <p class="c-card-search__results__detail-popout__info__field">
+          <span class="c-card-search__results__detail-popout__info__label">Rarity:</span>
+          {{ selectedCard.rarity }}
+        </p> <!-- /.c-card-search__results__detail-popout__info__field -->
+
+        <p class="c-card-search__results__detail-popout__info__field">
+          <span class="c-card-search__results__detail-popout__info__label">Card Type:</span>
+          {{ selectedCard.type }}
+          <span *ngIf="selectedCard.subtype.length > 0">
+            &nbsp;-&nbsp;{{ selectedCard.subtype }}</span>
+        </p> <!-- /.c-card-search__results__detail-popout__info__field-->
+
+        <!-- TODO: if there is a mana cost (i.e. not land, suspend card, etc)
+            also need to show the icons for color -->
+        <p class="c-card-search__results__detail-popout__info__field">
+          <span class="c-card-search__results__detail-popout__info__label">Mana Cost:</span>
+          {{ selectedCard.mana_cost }}
+        </p> <!-- /.c-card-search__results__detail-popout__info__field -->
+
+        <p class="c-card-search__results__detail-popout__info__field">
+          <span class="c-card-search__results__detail-popout__info__label">Oracle Text:</span>
+          {{ selectedCard.oracle_text }}
+        </p> <!-- /.c-card-search__results__detail-popout__info__field -->
+
+        <p class="c-card-search__results__detail-popout__info__field">
+          <span class="c-card-search__results__detail-popout__info__label">Price:</span>
+          {{ selectedCard.price }}
+        </p> <!-- /.c-card-search__results__detail-popout__info__field -->
 
       </div> <!-- /.c-card-search__results__detail-popout__info -->
 

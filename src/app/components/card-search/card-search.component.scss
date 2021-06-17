@@ -9,8 +9,8 @@
 
   //.c-card-search__search-bar
   @include element('search-bar') {
-    //.c-card-search__search-bar__container
-    @include element('container') {
+    //.c-card-search__search-bar__form
+    @include element('form') {
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-between;
@@ -70,7 +70,7 @@
           //.c-card-search__results__list__card__set__icon
           @include element('icon') {
             flex: 0 1 auto;
-            margin-right: 5px;
+            margin-right: 10px;
             width: 20px;
           }
 
@@ -127,14 +127,30 @@
         //.c-card-search__results__detail-popout__set__icon
         @include element('icon') {
           flex: 0 1 auto;
-          margin-right: 5px;
-          width: 20px;
+          margin-right: 10px;
+          width: 26px;
         }
 
         //.c-card-search__results__detail-popout__set__name
         @include element('name') {
           flex: 0 1 auto;
           padding-top: 3px;
+        }
+      }
+
+      //.c-card-search__results__detail-popout__info
+      @include element('info') {
+
+        //.c-card-search__results__detail-popout__info__field
+        // p element, contains the label & value
+        @include element('field') {
+          margin: 0 0 6px;
+        }
+
+        //.c-card-search__results__detail-popout__info__label
+        @include element('label') {
+          font-weight: bold;
+          margin-right: 3px;
         }
       }
 

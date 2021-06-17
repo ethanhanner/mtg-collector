@@ -14,6 +14,8 @@ import { SetDetailsComponent } from './components/set-details/set-details.compon
 import { SetListComponent } from './components/set-list/set-list.component';
 import { BuildSetTableComponent } from './components/build-set-table/build-set-table.component';
 import { TestDbComponent } from './components/test-db/test-db.component';
+import { GetSetNamePipe } from './pipes/get-set-name.pipe';
+import { GetSetIconPipe } from './pipes/get-set-icon.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { TestDbComponent } from './components/test-db/test-db.component';
     SetDetailsComponent,
     SetListComponent,
     BuildSetTableComponent,
-    TestDbComponent
+    TestDbComponent,
+    GetSetNamePipe,
+    GetSetIconPipe
   ],
   imports: [
     BrowserModule,
