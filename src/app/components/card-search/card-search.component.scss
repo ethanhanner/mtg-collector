@@ -31,15 +31,37 @@
     }
   }
 
-  //.c-card-search__results
-  @include element('results') {
+  //.c-card-search__detail
+  @include element('detail') {
 
-    //.c-card-search__results__list-container
-    @include element('list-container') {
-      width: 100%;
+    //.c-card-search__detail__back
+    @include element('back') {
+      margin-top: 20px;
+
+      //.c-card-search__detail__back__button
+      @include element('button') {
+        padding: 5px 10px;
+
+        .icon {
+          margin-right: 8px;
+        }
+
+        //.c-card-search__detail__back__button__text
+        @include element('text') {
+          bottom: 1px;
+          position: relative;
+        }
+      }
     }
 
+  }
+
+  //.c-card-search__results
+  @include element('results') {
+    width: 100%;
+
     //.c-card-search__results__list
+    // ul element
     @include element('list') {
       list-style-type: none;
       margin: 0;
@@ -51,6 +73,7 @@
       }
 
       //.c-card-search__results__list__card
+      // li element
       @include element('card') {
         margin: 25px 0;
 
@@ -82,85 +105,6 @@
         }
       }
 
-    }
-
-    //.c-card-search__results__detail-popout
-    @include element('detail-popout') {
-      background-color: #fff;
-      height: 100vh;
-      margin: 20px auto 0;
-      max-width: 560px;
-      width: 100%;
-
-      @include mq('sm') {
-
-      }
-
-      //.c-card-search__results__detail-popout__back-button
-      @include element('back-button') {
-        padding: 5px 10px;
-
-        .icon {
-          margin-right: 8px;
-        }
-
-        //.c-card-search__results__detail-popout__back-button__text
-        @include element('text') {
-          bottom: 1px;
-          position: relative;
-        }
-      }
-
-      //.c-card-search__results__detail-popout__header
-      @include element('header') {
-        margin: 25px 0 5px;
-        text-transform: uppercase;
-      }
-
-      //.c-card-search__results__detail-popout__set
-      @include element('set') {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: flex-start;
-        width: 100%;
-
-        //.c-card-search__results__detail-popout__set__icon
-        @include element('icon') {
-          flex: 0 1 auto;
-          margin-right: 10px;
-          width: 26px;
-        }
-
-        //.c-card-search__results__detail-popout__set__name
-        @include element('name') {
-          flex: 0 1 auto;
-          padding-top: 3px;
-        }
-      }
-
-      //.c-card-search__results__detail-popout__info
-      @include element('info') {
-
-        //.c-card-search__results__detail-popout__info__field
-        // p element, contains the label & value
-        @include element('field') {
-          margin: 0 0 6px;
-        }
-
-        //.c-card-search__results__detail-popout__info__label
-        @include element('label') {
-          font-weight: bold;
-          margin-right: 3px;
-        }
-      }
-
-      //.c-card-search__results__detail-popout__card-image
-      @include element('card-image') {
-        display: block;
-        margin: 30px auto;
-        max-width: 360px;
-        width: 60%;
-      }
     }
 
   }

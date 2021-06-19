@@ -1,3 +1,5 @@
+// https://scryfall.com/docs/api
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, throwError, from } from 'rxjs';

@@ -15,9 +15,10 @@ import { SetService } from 'src/app/services/set.service';
 })
 export class CardSearchComponent implements OnInit {
   cards: Card[] = []; // holds the Card objects that were returned from the search
-  selectedCard ?: Card;
+  selectedCard: Card;
   // raw_output$: Observable<JSON>;
   card_name: string;
+  detailOpen = false;
   private searchTerms = new Subject<string>();
 
   constructor(
@@ -33,11 +34,13 @@ export class CardSearchComponent implements OnInit {
   // called when user clicks a card in the search result list. selects that card to display details
   selectCard(card: Card): void {
     this.selectedCard = card;
+    this.detailOpen = true;
   }
 
   // called when user clicks button to go back to search results from the card detail view
+  // note the selectedCard still has the details of the last card that was clicked
   closeDetail(): void {
-    this.selectedCard = undefined;
+    this.detailOpen = false;
   }
 
   search(term: string): void {

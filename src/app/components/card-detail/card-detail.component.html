@@ -1,44 +1,48 @@
 <div class="c-card-detail" *ngIf="card">
-  <h2 class="c-card-detail__name-header">{{ card.name }}</h2>
+  <h2 class="c-card-detail__header">{{ card.name }}</h2>
 
   <div class="c-card-detail__set">
-    <!-- <img class="c-card-detail__set__icon" [src]="card.set_icon"/>
-    <span class="c-card-detail__set__name">{{ card.set_name }}</span> -->
+    <img class="c-card-detail__set__icon" [src]="card.set_code | getSetIcon" />
+    <span class="c-card-detail__set__name">{{ card.set_code | getSetName }}</span>
   </div> <!-- /.c-card-detail__set -->
 
-  <img class="c-card-detail__card-image" [src]="card.image_uri"/>
+  <img class="c-card-detail__image" [src]="card.image_uri" />
 
-  <div class="c-card-detail__info-section__wrapper">
-    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--rarity">
-      <span class="c-card-detail__info-section__field__label">Rarity:</span>
-      <span class="c-card-detail__info-section____field__value">{{ card.rarity }}</span>
-    </div> <!-- /.c-card-detail__info-section__field -->
+  <div class="c-card-detail__info">
 
-    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--type">
-      <span class="c-card-detail__info-section__field__label">Type:</span>
-      <span class="c-card-detail__info-section____field__value">{{ card.type }}</span>
-    </div> <!-- /.c-card-detail__info-section__field -->
+    <p class="c-card-detail__info__field">
+      <span class="c-card-detail__info__field__label">Rarity:</span>
+      {{ card.rarity }}
+    </p> <!-- /.c-card-detail__info__field -->
 
-    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--mana-cost">
-      <span class="c-card-detail__info-section__field__label">Mana Cost:</span>
-      <span class="c-card-detail__info-section____field__value">{{ card.mana_cost }}</span>
-    </div> <!-- /.c-card-detail__info-section__field -->
+    <p class="c-card-detail__info__field">
+      <span class="c-card-detail__info__field__label">Card Type:</span>
+      {{ card.type }}
+      <span *ngIf="card.subtype.length > 0">
+        &nbsp;-&nbsp;{{ card.subtype }}
+      </span>
+    </p> <!-- /.c-card-detail__info__field -->
 
-    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--oracle-text">
-      <span class="c-card-detail__info-section__field__label c-card-detail__info-section__field__label--oracle-text">
-        Oracle Text:</span>
-      <span class="c-card-detail__info-section____field__value">{{ card.oracle_text }}</span>
-    </div> <!-- /.c-card-detail__info-section__field -->
+    <!-- TODO: show icons for color -->
+    <p class="c-card-detail__info__field" *ngIf="card.mana_cost.length > 0">
+      <span class="c-card-detail__info__field__label">Mana Cost:</span>
+      {{ card.mana_cost }}
+    </p> <!-- /.c-card-detail__info__field -->
 
-    <div class="c-card-detail__info-section__field c-card-detail__info-section__field--price">
-      <span class="c-card-detail__info-section__field__label">Price:</span>
-      <span class="c-card-detail__info-section____field__value">{{ card.price }}</span>
-    </div> <!-- /.c-card-detail__info-section__field -->
+    <p class="c-card-detail__info__field">
+      <span class="c-card-detail__info__field__label">Oracle Text:</span>
+      {{ card.oracle_text }}
+    </p> <!-- /.c-card-detail__info__field -->
 
-    <!-- COLLECTION INFO SECTION
-      # collected
-      DROP DOWN MENU FOR TAGS ASSIGNED TO THIS CARD? CLICK THE ARROW TO REVEAL
-      decks that have this card in it? -->
+    <p class="c-card-detail__info__field">
+      <span class="c-card-detail__info__field__label">Price:</span>
+      {{ card.price }}
+    </p> <!-- /.c-card-detail__info__field -->
 
-  </div> <!-- /.c-card-detail__info-section__wrapper -->
+      <!-- COLLECTION INFO SECTION
+        # collected
+        DROP DOWN MENU FOR TAGS ASSIGNED TO THIS CARD? CLICK THE ARROW TO REVEAL
+        decks that have this card in it? -->
+
+  </div> <!-- /.c-card-detail__info-->
 </div> <!-- /.c-card-detail -->

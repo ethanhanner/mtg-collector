@@ -1,0 +1,62 @@
+@import 'styles';
+
+//.c-card-detail
+@include component-block("card-detail") {
+  margin: 20px auto 0;
+  max-width: 560px;
+  width: 100%;
+
+  //.c-card-detail__header
+  @include element('header') {
+    margin: 25px 0 5px;
+    text-transform: uppercase;
+  }
+
+  //.c-card-detail__set
+  @include element('set') {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    width: 100%;
+
+    //.c-card-detail__set__icon
+    @include element('icon') {
+      flex: 0 1 auto;
+      margin-right: 10px;
+      width: 26px;
+    }
+
+    //.c-card-detail__set__name
+    @include element('name') {
+      flex: 0 1 auto;
+      padding-top: 3px;
+    }
+
+  }
+
+  //.c-card-detail__image
+  @include element('image') {
+    display: block;
+    margin: 30px auto;
+    max-width: 360px;
+    width: 60%;
+  }
+
+  //.c-card-detail__info
+  @include element('info') {
+
+
+    //.c-card-detail__info__field
+    @include element('field') {
+      margin: 0 0 6px;
+
+      //.c-card-detail__info__field__label
+      @include element('label') {
+        font-weight: bold;
+        margin-right: 3px;
+      }
+    }
+  }
+
+
+}

@@ -14,9 +14,10 @@
   </form> <!-- /.c-card-search__search-bar__form -->
 
 
-  <div class="c-card-search__results">
 
-    <div class="c-card-search__results__list-container" *ngIf="selectedCard === undefined">
+
+  <div class="c-card-search__results" *ngIf="!detailOpen">
+
       <h3 class="c-card-search__results__list__header">{{ cards.length }} Results</h3> <!-- TODO: add or remove s based on 1 result or > 1 -->
       <ul class="c-card-search__results__list">
         <li class="c-card-search__results__list__card" *ngFor="let card of cards">
@@ -27,85 +28,19 @@
           </div> <!-- /.c-card-search__results__list__card__set -->
         </li>
       </ul>
-    </div> <!-- /.c-card-search__results__list-container -->
 
-
-    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-          ***************************************************************************************
-          Detail for an individual card, displays when a card is clicked in the list
-          *****************************************************************************************
-        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-    <div class="c-card-search__results__detail-popout" *ngIf="selectedCard">
-      <button class="c-card-search__results__detail-popout__back-button" (click)="closeDetail()">
-        <span class="icon icon-arrow-left"></span>
-        <span class="c-card-search__results__detail-popout__back-button__text">Back to Results</span>
-      </button>
-      <h2 class="c-card-search__results__detail-popout__header">{{ selectedCard.name }}</h2>
-      <div class="c-card-search__results__detail-popout__set">
-        <img class="c-card-search__results__detail-popout__set__icon" [src]="selectedCard.set_code | getSetIcon" />
-        <span class="c-card-search__results__detail-popout__set__name">{{ selectedCard.set_code | getSetName }}</span>
-
-      </div> <!-- /.c-card-search__results__detail-popout__set -->
-
-      <img class="c-card-search__results__detail-popout__card-image" [src]="selectedCard.image_uri"/>
-
-      <div class="c-card-search__results__detail-popout__info">
-        <p class="c-card-search__results__detail-popout__info__field">
-          <span class="c-card-search__results__detail-popout__info__label">Rarity:</span>
-          {{ selectedCard.rarity }}
-        </p> <!-- /.c-card-search__results__detail-popout__info__field -->
-
-        <p class="c-card-search__results__detail-popout__info__field">
-          <span class="c-card-search__results__detail-popout__info__label">Card Type:</span>
-          {{ selectedCard.type }}
-          <span *ngIf="selectedCard.subtype.length > 0">
-            &nbsp;-&nbsp;{{ selectedCard.subtype }}</span>
-        </p> <!-- /.c-card-search__results__detail-popout__info__field-->
-
-        <!-- TODO: if there is a mana cost (i.e. not land, suspend card, etc)
-            also need to show the icons for color -->
-        <p class="c-card-search__results__detail-popout__info__field">
-          <span class="c-card-search__results__detail-popout__info__label">Mana Cost:</span>
-          {{ selectedCard.mana_cost }}
-        </p> <!-- /.c-card-search__results__detail-popout__info__field -->
-
-        <p class="c-card-search__results__detail-popout__info__field">
-          <span class="c-card-search__results__detail-popout__info__label">Oracle Text:</span>
-          {{ selectedCard.oracle_text }}
-        </p> <!-- /.c-card-search__results__detail-popout__info__field -->
-
-        <p class="c-card-search__results__detail-popout__info__field">
-          <span class="c-card-search__results__detail-popout__info__label">Price:</span>
-          {{ selectedCard.price }}
-        </p> <!-- /.c-card-search__results__detail-popout__info__field -->
-
-      </div> <!-- /.c-card-search__results__detail-popout__info -->
-
-    </div> <!-- /.c-card-search__results__detail-popout -->
-
-
-    <!-- <app-card-detail [card]="cards$"></app-card-detail> -->
-    <!-- <ul>
-      <li *ngFor="let card of cards$">
-        <img [src]="card.image_uri" />
-        <b>ID:</b> {{ card.id }} <br/><br/>
-        <b>NAME:</b> {{ card.name }} <br/><br/>
-        <b>SET ID:</b> {{ card.set_id }} <br/><br/>
-        <b>SET CODE:</b> {{ card.set_code }} <br/><br/>
-        <b>SET NAME:</b> {{ card.set_name }} <br/><br/>
-        <b>IS FOIL?:</b> {{ card.isFoil }} <br/><br/>
-        <b>IMAGE URI:</b> {{ card.image_uri }} <br/><br/>
-        <b>CMC:</b> {{ card.cmc }} <br/><br/>
-        <b>COLORS:</b> {{ card.colors }} <br/><br/>
-        <b>LAYOUT:</b> {{ card.layout }} <br/><br/>
-        <b>MANA COST:</b> {{ card.mana_cost }} <br/><br/>
-        <b>TYPE:</b> {{ card.type }} <br/><br/>
-        <b>RARITY:</b> {{ card.rarity }} <br/><br/>
-        <b>ORACLE TEXT:</b> {{ card.oracle_text }} <br/><br/>
-        <b>PRICE:</b> {{ card.price }} <br/><br/>
-        <b>PRICE DATE:</b> {{ card.price_date }} <br/><br/>
-      </li>
-    </ul> -->
   </div> <!-- /.c-card-serch__results -->
+
+  <div class="c-card-search__detail" *ngIf="detailOpen">
+    <div class="c-card-search__detail__back">
+      <button class="c-card-search__detail__back__button" (click)="closeDetail()">
+        <span class="icon icon-arrow-left"></span>
+        <span class="c-card-search__detail__back__button__text">Back to Results</span>
+      </button>
+    </div> <!-- /.c-card-search__detail__back -->
+
+    <app-card-detail [card]="selectedCard"></app-card-detail>
+
+  </div> <!-- /.c-card-search__detail -->
+
 </div> <!-- /.c-card-search -->
