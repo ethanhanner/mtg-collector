@@ -87,20 +87,53 @@
         @include element('set') {
           display: flex;
           flex-flow: row nowrap;
+          height: 22px;
           justify-content: flex-start;
+          margin-top: 5px;
           width: 100%;
 
           //.c-card-search__results__list__card__set__icon
           @include element('icon') {
             flex: 0 1 auto;
-            margin-right: 10px;
-            width: 20px;
+            margin-right: 7px;
+            width: 28px;
           }
 
           //.c-card-search__results__card__set__name
           @include element('name') {
+            bottom: -2px;
             flex: 0 1 auto;
-            padding-top: 3px;
+            position: relative;
+          }
+        }
+
+        //.c-card-search__results__list__card__collection-info
+        @include element('collection-info') {
+          display: flex;
+          flex-flow: row nowrap;
+          height: 22px;
+          justify-content: flex-start;
+          margin-top: 5px;
+          width: 100%;
+
+          //.c-card-search__results__list__card__collection-info__price
+          @include element('price') {
+            flex: 0 1 auto;
+            margin-right: 10px;
+            position: relative;
+            top: 3px;
+          }
+
+          //.c-card-search__results__list__card__collection-info__add
+          // button element
+          @include element('add') {
+            flex: 0 1 auto;
+
+            .icon-plus {
+              bottom: 3px;
+              font-size: 11px;
+              position: relative;
+            }
           }
         }
       }

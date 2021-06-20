@@ -23,9 +23,17 @@
         <li class="c-card-search__results__list__card" *ngFor="let card of cards">
           <span class="c-card-search__results__list__card__name" (click)="selectCard(card)">{{ card.name }}</span>
           <div class="c-card-search__results__list__card__set">
-            <!-- <img class="c-card-search__results__list__card__set__icon" [src]="card.set_icon"/>
-            <span class="c-card-search__results__list__card__set__name">{{ card.set_name }}</span> -->
+            <img class="c-card-search__results__list__card__set__icon" [src]="card.set_code | getSetIcon"/>
+            <span class="c-card-search__results__list__card__set__name">{{ card.set_code | getSetName }}</span>
           </div> <!-- /.c-card-search__results__list__card__set -->
+          <div class="c-card-search__results__list__card__collection-info">
+            <span class="c-card-search__results__list__card__collection-info__price">
+              ${{ card.price }}
+            </span>
+            <button class="c-card-search__results__list__card__collection-info__add">
+              <span class="icon icon-plus"></span>
+            </button>
+          </div>
         </li>
       </ul>
 
