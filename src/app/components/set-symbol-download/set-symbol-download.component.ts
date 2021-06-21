@@ -19,7 +19,7 @@ import { exitCode } from 'process';
 })
 export class SetSymbolDownloadComponent implements OnInit {
   setIconUri: string;
-  baseIconUri = "http://localhost:8080/set_icons/";
+  baseIconUri = "http://localhost:8080/temp/";
   setData: any;
   message = "";
 
@@ -41,7 +41,11 @@ export class SetSymbolDownloadComponent implements OnInit {
   getSetData() {
     this.setData = undefined;
     this.scryfallService.getSets()
-      .subscribe(resp => this.setData = resp.data);
+      .subscribe(resp => {
+        this.setData = resp.data;
+        console.log("number of scryfall sets = " + this.setData.length);
+        });
+
   }
 
   // Takes in setData (JSON). Checks if there is already an icon file for the set
@@ -103,18 +107,24 @@ export class SetSymbolDownloadComponent implements OnInit {
       );
   }
 
-  // Download the set svgs. For some reason this only works in increments of 10,
-  // which is the reason for a start and end index.
+  // Download the set svgs in batches
   // **** IMPORTANT: assumes getSetData() has already been called
   //
   // @param {any | number} start - index to start at in the setData
   // @param {any | number} end - index to end at in the setData
   downloadSetIconSvgs(start: any, end: any) {
-    var x = Number(start);
-    var y = Number(end);
-    for(let i = x; i < y; i++) {
-      saveAs(this.setData[i].icon_svg_uri, this.setData[i].code + ".svg");
-    }
+    setTimeout(x => {
+      var k = Number(start);
+      var j = Number(end);
+      for(let i = k; (i <= j) && (i < (k + 9)); i++) {
+        console.log(i);
+        saveAs(this.setData[i].icon_svg_uri, this.setData[i].code + ".svg");
+      }
+      if(j >= (k + 9)) {
+        this.downloadSetIconSvgs(k+ 9, j);
+      }
+    }, 1500);
+
   }
 
   // quick check to see if an icon file exists, used during testing

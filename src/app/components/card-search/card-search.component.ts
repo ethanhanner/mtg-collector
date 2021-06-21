@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, of } from 'rxjs';
 import {
-  debounceTime, distinctUntilChanged, switchMap
+  debounceTime, distinctUntilChanged, switchMap, map
 } from 'rxjs/operators';
 
 import { Card } from '../../models/card.model';
@@ -46,33 +46,39 @@ export class CardSearchComponent implements OnInit {
   search(term: string): void {
     this.cards = []; // empty cards array
     this.scryfallService.searchCards(term)
-      .subscribe(resp => this.parseJSONtoCards(resp.data));
+      .pipe(map(resp => {
+        let cardArray = <Card[]>[];
+        resp.data.forEach(x => {cardArray.push(this.parseJSONtoCards(x))});
+        return cardArray;
+      }))
+      .subscribe(resp => {
+        this.cards = resp;
+      });
   }
 
   // Parse a JSON array of cards from Scryfall into an array of Card objects
-  parseJSONtoCards(cardData: any) {
-    for(let i = 0; i < cardData.length; i++) {
-      let nextCard = new Card();
-      nextCard.id = cardData[i].id;
-      nextCard.name = cardData[i].name;
-      nextCard.set_code = cardData[i].set;
-      nextCard.isFullArt = cardData[i].full_art;
-      nextCard.image_uri = cardData[i].image_uris.png;
-      nextCard.cmc = cardData[i].cmc;
-      nextCard.colors = cardData[i].colors;
-      nextCard.layout = cardData[i].layout;
-      nextCard.mana_cost = cardData[i].mana_cost;
-      nextCard.type = this.getType(cardData[i].type_line);
-      nextCard.subtype = this.getSubtype(cardData[i].type_line);
-      nextCard.rarity = cardData[i].rarity;
-      nextCard.oracle_text = cardData[i].oracle_text; // TODO: this doesn't come out formatted - see Fabled Hero
-      nextCard.price = cardData[i].prices.usd;
-      nextCard.flavor_name = cardData[i].flavor_name;
-      nextCard.flavor_text = cardData[i].flavor_text;
-      nextCard.frame_effects = cardData[i].frame_effects;
-      // TODO: card_faces
-      this.cards.push(nextCard);
+  parseJSONtoCards(cardData: any): Card {
+    return <Card> {
+      id: cardData.id,
+      name: cardData.name,
+      set_code: cardData.set,
+      isFullArt: cardData.full_art,
+      image_uri: cardData.image_uris.png,
+      cmc: cardData.cmc,
+      colors: cardData.colors,
+      layout: cardData.layout,
+      mana_cost: cardData.mana_cost,
+      type: this.getType(cardData.type_line),
+      subtype: this.getSubtype(cardData.type_line),
+      rarity: cardData.rarity,
+      oracle_text: cardData.oracle_text, // TODO: this doesn't come out formatted - see Fabled Hero
+      price: cardData.prices.usd,
+      flavor_name: cardData.flavor_name,
+      flavor_text: cardData.flavor_text,
+      frame_effects: cardData.frame_effects
     }
+    // TODO: card_faces
+
   }
   // pass in a card type line and get just the type
   // e.g. "Creature - Faerie" returns "Creature"
